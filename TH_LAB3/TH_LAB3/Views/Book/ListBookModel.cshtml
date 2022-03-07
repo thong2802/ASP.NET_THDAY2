@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TH_LAB3.Models.Book>
+
+@{
+    ViewBag.Title = "ListBookModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListBookModel</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBook")
+</p>
+<h2>List Book</h2>
+<table class="styled-table">
+    <tr class="active-row">
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Image_Cover</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        <img src="@item.Image_Cover" width="95" title="cover" />
+    </td>
+    <td>
+        <a class="Edit" href="/Book/EditBook/@item.Id">Edit</a>
+    </td>
+    <td>
+        <a class="Delete" href="/Book/Delete/@item.Id">Delete</a>
+    </td>
+    <td>
+        <a class="Details" href="/Book/Details/@item.Id">Details</a>
+    </td>
+</tr>
+    }
+
+</table>
+
